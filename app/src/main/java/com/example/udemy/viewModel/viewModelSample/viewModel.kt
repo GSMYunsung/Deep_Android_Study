@@ -1,8 +1,8 @@
-package com.example.udemy.ViewModel.ViewModelSample
+package com.example.udemy.viewModel.viewModelSample
 
 import androidx.lifecycle.ViewModel
 
-class ViewModel : ViewModel(){
+class viewModel : ViewModel(){
     private var count = 0
 
     fun getCurrentCount() : Int{
