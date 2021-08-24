@@ -9,16 +9,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Udemy">
-        <activity android:name=".ViewModel.ViewModelChallange.ViewModelChallangeActivity">
+        <activity android:name=".viewModel.viewModelChallange.ViewModelChallangeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ViewModel.ViewModelSample.ActivityViewModel">
+        <activity android:name=".viewModel.viewModelSample.ActivityViewModel">
         </activity>
-        <activity android:name=".MainActivity" />
+        <activity android:name=".mainActivity" />
     </application>
 
 </manifest>
