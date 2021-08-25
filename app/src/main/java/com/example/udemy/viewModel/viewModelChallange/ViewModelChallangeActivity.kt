@@ -13,9 +13,12 @@ class ViewModelChallangeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        //라이브 데이터 + 데이터 바인딩 결합 챌린지 성공
+
         val viewmodel = ViewModelProvider(this).get(ViewModelChallangeViewModel::class.java)
         binding = DataBindingUtil.setContentView(this,R.layout.activity_view_model_challange)
 
+        //이 뷰에 라이프사이클 오너를 적용해 변경사항이 저장되게 만든다.
         binding.apply {
             lifecycleOwner = this@ViewModelChallangeActivity
             binding.clickEvent = viewmodel
