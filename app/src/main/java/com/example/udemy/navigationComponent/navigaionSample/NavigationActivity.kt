@@ -1,4 +1,4 @@
-package com.example.udemy.navigationComponent
+package com.example.udemy.navigationComponent.navigaionSample
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

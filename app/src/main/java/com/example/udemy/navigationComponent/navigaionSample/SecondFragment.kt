@@ -1,4 +1,4 @@
-package com.example.udemy.navigationComponent
+package com.example.udemy.navigationComponent.navigaionSample
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import com.example.udemy.R
-import com.example.udemy.databinding.FragmentHomeBinding
 import com.example.udemy.databinding.FragmentSecondBinding
 
 class SecondFragment : Fragment() {

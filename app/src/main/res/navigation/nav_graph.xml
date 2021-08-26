@@ -7,16 +7,20 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.udemy.navigationComponent.HomeFragment"
+        android:name="com.example.udemy.navigationComponent.navigaionSample.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_homeFragment_to_secondFragment"
-            app:destination="@id/secondFragment" />
+            app:destination="@id/secondFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_in_right"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_in_left" />
     </fragment>
     <fragment
         android:id="@+id/secondFragment"
-        android:name="com.example.udemy.navigationComponent.SecondFragment"
+        android:name="com.example.udemy.navigationComponent.navigaionSample.SecondFragment"
         android:label="fragment_second"
         tools:layout="@layout/fragment_second" />
 </navigation>
