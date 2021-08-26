@@ -9,25 +9,19 @@ class ViewModelChallangeViewModel : ViewModel() {
 
     //캡슐화를 지향하기위해 라이브데이터 변수 두개를 결합한다.
     //최종 값 변수
-    private val _value = MutableLiveData<String>()
-    val value: LiveData<String>
-        get() = _value
-
-    //edittext 변수값 저장 변수
-    private val _num = MutableLiveData<String>()
-    val num: LiveData<String>
-        get() = _num
+    private val _value = MutableLiveData<Int>()
+    val value: LiveData<Int> get() = _value
 
     init {
-        _value.value = "0"
+        _value.value = 0
     }
 
-    fun numAdd() {
-         _value.value = (_value.value.toString().toInt().plus((_num.value.toString().toInt()))).toString()
+    fun numAdd(num : String) {
+         _value.value = _value.value?.plus(num.toInt())
     }
 
-    fun numSubtract() {
-        _value.value = (_value.value.toString().toInt().minus((_num.value.toString().toInt()))).toString()
+    fun numSubtract(num : String) {
+        _value.value = _value.value?.minus(num.toInt())
     }
 
 }
