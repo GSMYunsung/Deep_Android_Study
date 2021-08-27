@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/homeFragment2"
-        android:name="com.example.udemy.navigationComponent.navigationChallange.homeFragment"
+        android:name="com.example.udemy.navigationComponent.navigationChallange.HomeFragment"
         android:label="fragment_home2"
         tools:layout="@layout/fragment_home2" >
         <action
@@ -19,16 +19,16 @@
     </fragment>
     <fragment
         android:id="@+id/nameFragment"
-        android:name="com.example.udemy.navigationComponent.navigationChallange.nameFragment"
+        android:name="com.example.udemy.navigationComponent.navigationChallange.NameFragment"
         android:label="fragment_name"
         tools:layout="@layout/fragment_name" >
         <action
-            android:id="@+id/action_nameFragment_to_emailFragment"
+            android:id="@+id/action_nameFragment_to_EmailFragment"
             app:destination="@id/emailFragment" />
     </fragment>
     <fragment
         android:id="@+id/emailFragment"
-        android:name="com.example.udemy.navigationComponent.navigationChallange.emailFragment"
+        android:name="com.example.udemy.navigationComponent.navigationChallange.EmailFragment"
         android:label="fragment_email"
         tools:layout="@layout/fragment_email" >
         <action
@@ -37,7 +37,7 @@
     </fragment>
     <fragment
         android:id="@+id/welcomeFragment"
-        android:name="com.example.udemy.navigationComponent.navigationChallange.welcomeFragment"
+        android:name="com.example.udemy.navigationComponent.navigationChallange.WelcomeFragment"
         android:label="fragment_welcome"
         tools:layout="@layout/fragment_welcome" >
         <action
@@ -46,7 +46,7 @@
     </fragment>
     <fragment
         android:id="@+id/termsFragment"
-        android:name="com.example.udemy.navigationComponent.navigationChallange.termsFragment"
+        android:name="com.example.udemy.navigationComponent.navigationChallange.TermsFragment"
         android:label="fragment_terms"
         tools:layout="@layout/fragment_terms" />
 </navigation>
