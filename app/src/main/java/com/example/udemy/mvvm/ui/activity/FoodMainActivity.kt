@@ -1,19 +1,14 @@
-package com.example.udemy.mvvm.activity
+package com.example.udemy.mvvm.ui.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
-import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
 import com.example.udemy.R
 import com.example.udemy.databinding.ActivityFoodMainBinding
-import com.example.udemy.databinding.FragmentHomeBinding
 
 class FoodMainActivity : AppCompatActivity() {
 
@@ -26,7 +21,7 @@ class FoodMainActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this,R.layout.activity_food_main)
 
         //네비게이션 컴포넌트 화면 정의
-        navController = findNavController(R.id.navHostFragment)
+        navController = supportFragmentManager.findFragmentById(R.id.navHostFragment)!!.findNavController()
 
         //네비게이션 컴포넌트 xml 구성요소 정의하기
         val appBarConfiguration = AppBarConfiguration(
@@ -40,6 +35,7 @@ class FoodMainActivity : AppCompatActivity() {
         //bottomNavigationView 에 navController 를 정의해준다.
         binding.bottomNavigationView.setupWithNavController(navController)
 
+        //위의 엑션바에 해당 포지션 String 값 보내주기 ex) RecipesFragment = Recipes
         setupActionBarWithNavController(navController,appBarConfiguration)
 
     }

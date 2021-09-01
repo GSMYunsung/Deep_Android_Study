@@ -7,8 +7,8 @@
 
     <fragment
         android:id="@+id/recipesFragment"
-        android:name="com.example.udemy.mvvm.fragment.RecipesFragment"
-        android:label="fragment_recipes"
+        android:name="com.example.udemy.mvvm.ui.fragment.RecipesFragment"
+        android:label="Recipes"
         tools:layout="@layout/fragment_recipes" >
         <action
             android:id="@+id/action_recipesFragment_to_favoriteRecipesFragment"
@@ -16,8 +16,8 @@
     </fragment>
     <fragment
         android:id="@+id/favoriteRecipesFragment"
-        android:name="com.example.udemy.mvvm.fragment.FavoriteRecipesFragment"
-        android:label="fragment_favorite_recipes"
+        android:name="com.example.udemy.mvvm.ui.fragment.FavoriteRecipesFragment"
+        android:label="Favorites"
         tools:layout="@layout/fragment_favorite_recipes" >
         <action
             android:id="@+id/action_favoriteRecipesFragment_to_foodJokeFragment"
@@ -25,7 +25,7 @@
     </fragment>
     <fragment
         android:id="@+id/foodJokeFragment"
-        android:name="com.example.udemy.mvvm.fragment.FoodJokeFragment"
-        android:label="fragment_food_joke"
+        android:name="com.example.udemy.mvvm.ui.fragment.FoodJokeFragment"
+        android:label="Food Joke"
         tools:layout="@layout/fragment_food_joke" />
 </navigation>
