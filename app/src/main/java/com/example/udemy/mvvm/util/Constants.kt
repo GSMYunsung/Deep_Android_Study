@@ -1,7 +1,8 @@
-package com.example.udemy.mvvm.api.constants
+package com.example.udemy.mvvm.util
 
 class Constants {
 
+    //우리가 불러올 Api 에서는 기본 킷값과 사용자의 시리얼 번호가 필요하기때문에!
     companion object{
 
         const val API_KEY = "f926b9f4bd674b5b819f9ea455a7b45b"

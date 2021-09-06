@@ -1,6 +1,6 @@
-package com.example.udemy.mvvm.api
+package com.example.udemy.mvvm.data.network
 
-import com.example.udemy.mvvm.api.models.FoodRecipe
+import com.example.udemy.mvvm.models.FoodRecipe
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.QueryMap

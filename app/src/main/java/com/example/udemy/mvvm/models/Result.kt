@@ -1,4 +1,4 @@
-package com.example.udemy.mvvm.api.models
+package com.example.udemy.mvvm.models
 
 
 import com.google.gson.annotations.SerializedName
