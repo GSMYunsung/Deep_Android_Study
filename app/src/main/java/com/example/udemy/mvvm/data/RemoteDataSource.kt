@@ -10,6 +10,8 @@ import javax.inject.Inject
 //1. Food, Recipes API 또는 다음에서 데이터를 가져올 원격 데이터 소스
 //2. 로컬 데이터베이스를 처리할 로컬 데이터 소스
 
+//api 요청값을 가져온 foodRecipesApi에 전송
+
 class RemoteDataSource @Inject constructor(
     private val foodRecipesApi: FoodRecipesApi
 ){
