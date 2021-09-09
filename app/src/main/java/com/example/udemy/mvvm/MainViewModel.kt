@@ -31,24 +31,45 @@ class MainViewModel @Inject constructor(
     }
 
     private suspend fun getRecipesSafeCall(queries: Map<String, String>) {
+        //처음에는 로딩 값으로 시작
+        recipesResponse.value = NetWorkResult.Loading()
         if (hasInternetConnection()){
             try {
-                //만약 여기서 와이파이가 연결 즉, (true) 값이라면 데이터를 api에 값을 보내주는 RemoteDataSource에 보내준다.
                 val response = repository.remote.getRecipes(queries)
                 recipesResponse.value = handleFoodRecipesResponse(response)
             }catch (e:Exception){
-
+                recipesResponse.value = NetWorkResult.Error("Recipes not found.")
             }
         }
         else{
             //만약 여기서 와이파이가 연결안됨 즉, (false) 값이라면 에러 메시지를 NetWorkResult class에 보내준다.
             recipesResponse.value = NetWorkResult.Error("No Internet Connection 연결오류")
         }
-    }
+   }
 
     //api로 부터 응답을 받음
     private fun handleFoodRecipesResponse(response: Response<FoodRecipe>): NetWorkResult<FoodRecipe>? {
+        when{
+            response.message().toString().contains("timeout") -> {
+                return NetWorkResult.Error("timeout")
+            }
+            response.code() == 402 ->{
+                //402(결제 필요): 이 요청은 결제가 필요합니다.
+                return NetWorkResult.Error("API key Limited.")
+            }
+            response.body()!!.results.isNullOrEmpty() -> {
+                return NetWorkResult.Error("Recipes not found.")
+            }
+            //만약 여기서 와이파이가 연결 즉, (true) 값이라면 데이터를 api에 값을 보내주는 RemoteDataSource에 보내준다.
+            response.isSuccessful -> {
+                val foodRecipes = response.body()
+                return NetWorkResult.Success(foodRecipes!!)
+            }
+            else -> {
+                return NetWorkResult.Error(response.message())
+            }
 
+        }
     }
 
     private fun hasInternetConnection() : Boolean{
