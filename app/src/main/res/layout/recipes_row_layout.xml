@@ -1,142 +1,153 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="300dp"
-    android:layout_marginTop="4dp"
-    android:id="@+id/recipesRowLayout"
-    android:layout_marginBottom="4dp">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/row_cardView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:strokeWidth="1dp"
-        app:cardCornerRadius="10dp"
-        app:strokeColor="@color/lightMediumGray"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" >
+    <data>
+        <variable
+            name="result"
+            type="com.example.udemy.mvvm.models.Result" />
+    </data>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/white">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_marginTop="4dp"
+        android:id="@+id/recipesRowLayout"
+        android:layout_marginBottom="4dp">
 
-            <ImageView
-                android:id="@+id/recipe_imageView"
-                android:layout_width="200dp"
-                android:layout_height="0dp"
-                android:scaleType="centerCrop"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:srcCompat="@tools:sample/avatars" />
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/row_cardView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:strokeWidth="1dp"
+            app:cardCornerRadius="10dp"
+            app:strokeColor="@color/lightMediumGray"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" >
 
-            <TextView
-                android:id="@+id/title_textView"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="12dp"
-                android:layout_marginEnd="12dp"
-                android:ellipsize="end"
-                android:fontFamily="@font/courgette"
-                android:maxLines="2"
-                android:text="TextView"
-                android:textColor="@color/black"
-                android:textSize="20dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.189"
-                app:layout_constraintStart_toEndOf="@+id/recipe_imageView"
-                app:layout_constraintTop_toTopOf="parent" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white">
 
-            <TextView
-                android:id="@+id/description_textView"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:ellipsize="end"
-                android:maxLines="3"
-                android:text="국가안전보장회의는 대통령이 주재한다. 모든 국민은 법률이 정하는 바에 의하여 국방의 의무를 진다. 법률안에 이의가 있을 때에는 대통령은 제1항의 기간내에 이의서를 붙여 국회로 환부하고, 그 재의를 요구할 수 있다. 국회의 폐회중에도 또한 같다.
+                <ImageView
+                    android:id="@+id/recipe_imageView"
+                    android:layout_width="200dp"
+                    android:layout_height="0dp"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:srcCompat="@tools:sample/avatars" />
+
+                <TextView
+                    android:id="@+id/title_textView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginEnd="12dp"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/courgette"
+                    android:maxLines="2"
+                    android:text="TextView"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.189"
+                    app:layout_constraintStart_toEndOf="@+id/recipe_imageView"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/description_textView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:ellipsize="end"
+                    android:maxLines="3"
+                    android:text="국가안전보장회의는 대통령이 주재한다. 모든 국민은 법률이 정하는 바에 의하여 국방의 의무를 진다. 법률안에 이의가 있을 때에는 대통령은 제1항의 기간내에 이의서를 붙여 국회로 환부하고, 그 재의를 요구할 수 있다. 국회의 폐회중에도 또한 같다.
 
 대법원에 대법관을 둔다. 다만, 법률이 정하는 바에 의하여 대법관이 아닌 법관을 둘 수 있다. 정당은 그 목적·조직과 활동이 민주적이어야 하며, 국민의 정치적 의사형성에 참여하는데 필요한 조직을 가져야 한다."
-                android:textColor="@color/darkGray"
-                app:layout_constraintEnd_toEndOf="@+id/title_textView"
-                app:layout_constraintStart_toStartOf="@+id/title_textView"
-                app:layout_constraintTop_toBottomOf="@+id/title_textView" />
+                    android:textColor="@color/darkGray"
+                    app:layout_constraintEnd_toEndOf="@+id/title_textView"
+                    app:layout_constraintStart_toStartOf="@+id/title_textView"
+                    app:layout_constraintTop_toBottomOf="@+id/title_textView" />
 
-            <ImageView
-                app:tint="@color/red"
-                android:id="@+id/heart_imageView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:layout_marginBottom="36dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/heart_textView"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/heart_textView"
-                app:layout_constraintTop_toBottomOf="@+id/description_textView"
-                app:layout_constraintVertical_bias="0.0"
-                app:srcCompat="@drawable/ic_heart" />
+                <ImageView
+                    app:tint="@color/red"
+                    android:id="@+id/heart_imageView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginBottom="36dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/heart_textView"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@+id/heart_textView"
+                    app:layout_constraintTop_toBottomOf="@+id/description_textView"
+                    app:layout_constraintVertical_bias="0.0"
+                    app:srcCompat="@drawable/ic_heart" />
 
-            <TextView
-                android:textColor="@color/red"
-                android:textAlignment="center"
-                android:id="@+id/heart_textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="100"
-                app:layout_constraintStart_toStartOf="@+id/description_textView"
-                app:layout_constraintTop_toBottomOf="@+id/heart_imageView" />
+                <TextView
+                    android:textColor="@color/red"
+                    android:textAlignment="center"
+                    android:id="@+id/heart_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="100"
+                    app:layout_constraintStart_toStartOf="@+id/description_textView"
+                    app:layout_constraintTop_toBottomOf="@+id/heart_imageView" />
 
-            <ImageView
-                app:tint="@color/yellow"
-                android:id="@+id/clock_imageView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="@+id/heart_imageView"
-                app:layout_constraintEnd_toEndOf="@+id/clock_textView"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/clock_textView"
-                app:layout_constraintTop_toTopOf="@+id/heart_imageView"
-                app:srcCompat="@drawable/ic_clock" />
+                <ImageView
+                    app:tint="@color/yellow"
+                    android:id="@+id/clock_imageView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="@+id/heart_imageView"
+                    app:layout_constraintEnd_toEndOf="@+id/clock_textView"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@+id/clock_textView"
+                    app:layout_constraintTop_toTopOf="@+id/heart_imageView"
+                    app:srcCompat="@drawable/ic_clock" />
 
-            <TextView
-                android:textColor="@color/yellow"
-                android:textAlignment="center"
-                android:id="@+id/clock_textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:text="100"
-                app:layout_constraintStart_toEndOf="@+id/heart_textView"
-                app:layout_constraintTop_toBottomOf="@+id/clock_imageView" />
+                <TextView
+                    android:textColor="@color/yellow"
+                    android:textAlignment="center"
+                    android:id="@+id/clock_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:text="100"
+                    app:layout_constraintStart_toEndOf="@+id/heart_textView"
+                    app:layout_constraintTop_toBottomOf="@+id/clock_imageView" />
 
-            <ImageView
-                android:id="@+id/leaf_imageView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="@+id/leaf_textView"
-                app:layout_constraintStart_toStartOf="@+id/leaf_textView"
-                app:layout_constraintTop_toTopOf="@+id/clock_imageView"
-                app:srcCompat="@drawable/ic_leaf" />
+                <ImageView
+                    android:id="@+id/leaf_imageView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="@+id/leaf_textView"
+                    app:layout_constraintStart_toStartOf="@+id/leaf_textView"
+                    app:layout_constraintTop_toTopOf="@+id/clock_imageView"
+                    app:srcCompat="@drawable/ic_leaf" />
 
-            <TextView
-                android:textAlignment="center"
-                android:id="@+id/leaf_textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:text="leaf"
-                app:layout_constraintStart_toEndOf="@+id/clock_textView"
-                app:layout_constraintTop_toBottomOf="@+id/leaf_imageView" />
+                <TextView
+                    android:textAlignment="center"
+                    android:id="@+id/leaf_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:text="leaf"
+                    app:layout_constraintStart_toEndOf="@+id/clock_textView"
+                    app:layout_constraintTop_toBottomOf="@+id/leaf_imageView" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </com.google.android.material.card.MaterialCardView>
+        </com.google.android.material.card.MaterialCardView>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
