@@ -8,6 +8,7 @@ import android.net.NetworkRequest
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.example.udemy.mvvm.data.RemoteDataSource
 import com.example.udemy.mvvm.models.FoodRecipe
 import com.example.udemy.mvvm.util.NetWorkResult
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -19,6 +20,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
+    //이렇게 직접 이 리모트 함수를 가져올 수 도있지만 그렇게하면 의존성이 높아지기때문에 간접적으로 가져오게된다.
+    //private val remoteapi : RemoteDataSource,
     private val repository: Repository,
     application: Application
     ) : AndroidViewModel(application) {
@@ -35,6 +38,7 @@ class MainViewModel @Inject constructor(
         recipesResponse.value = NetWorkResult.Loading()
         if (hasInternetConnection()){
             try {
+                //의존성 주입으로 Remote class에서 가져온 함수를 쓴다.
                 val response = repository.remote.getRecipes(queries)
                 recipesResponse.value = handleFoodRecipesResponse(response)
             }catch (e:Exception){

@@ -12,6 +12,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
+@Suppress("DEPRECATION")
 @Module
 @InstallIn(ApplicationComponent::class)
 class NetworkModule {
