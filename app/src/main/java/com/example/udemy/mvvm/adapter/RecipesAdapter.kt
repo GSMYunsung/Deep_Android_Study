@@ -19,6 +19,7 @@ class RecipesAdapter : RecyclerView.Adapter<RecipesAdapter.MyViewHolder>() {
         : RecyclerView.ViewHolder(binding.root) {
 
             fun bind(result: Result){
+                //result 속성을 xml 에 넣어준다.
                 binding.result = result
                 //변경사항이 있을 때 마다 화면을 업데이트한다. (UI 자체를 건드린다.)
                 binding.executePendingBindings()
@@ -41,9 +42,9 @@ class RecipesAdapter : RecyclerView.Adapter<RecipesAdapter.MyViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val currentResult = recipe[position]
+        val currentRecipe = recipe[position]
         //화면 요소 구성
-        holder.bind(currentResult)
+        holder.bind(currentRecipe)
     }
 
     override fun getItemCount(): Int {
