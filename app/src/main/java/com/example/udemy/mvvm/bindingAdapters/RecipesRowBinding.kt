@@ -1,15 +1,26 @@
 package com.example.udemy.mvvm.bindingAdapters
 
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
+import coil.api.load
 import com.example.udemy.R
 
 class RecipesRowBinding {
 
     companion object  {
+
+        @BindingAdapter("loadImageFromUrl")
+        @JvmStatic
+        fun loadImageFromUrl(imageView: ImageView, imageUrl : String){
+            imageView.load(imageUrl){
+                crossfade(600)
+
+            }
+        }
 
         //바인딩 어뎁터로 해당 함수 지정
         @BindingAdapter("setNumberOfLikes")
@@ -31,9 +42,11 @@ class RecipesRowBinding {
             if(vegan){
                 when(view){
                     is TextView -> {
-                        ContextCompat.getColor(
-                            view.context,
-                            R.color.green
+                        view.setTextColor(
+                            ContextCompat.getColor(
+                                view.context,
+                                R.color.green
+                            )
                         )
                     }
                     is ImageView -> {

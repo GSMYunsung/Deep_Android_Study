@@ -7,9 +7,12 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
 import com.example.udemy.R
 import com.example.udemy.databinding.ActivityFoodMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class FoodMainActivity : AppCompatActivity() {
 
     private lateinit var navController: NavController
