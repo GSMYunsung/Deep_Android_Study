@@ -5,7 +5,7 @@ import com.example.udemy.mvvm.util.Constants.Companion.BASE_URL
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ApplicationComponent
+import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -14,8 +14,8 @@ import javax.inject.Singleton
 
 @Suppress("DEPRECATION")
 @Module
-@InstallIn(ApplicationComponent::class)
-class NetworkModule {
+@InstallIn(SingletonComponent::class)
+object NetworkModule {
 
     //종속성 끼리 자신의 반환값에 맞는 함수를 자동으로 연결
 
