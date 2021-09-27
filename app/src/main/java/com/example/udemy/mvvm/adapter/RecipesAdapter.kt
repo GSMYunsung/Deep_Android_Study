@@ -1,5 +1,6 @@
 package com.example.udemy.mvvm.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -12,7 +13,8 @@ import com.example.udemy.mvvm.util.RecipesDiffUtil
 
 class RecipesAdapter : RecyclerView.Adapter<RecipesAdapter.MyViewHolder>() {
 
-    private var recipe = emptyList<Result>()
+    private var recipe = emptyArray<Result>()
+    private var ps = 0
 
     //UI구성요소를 binding 형태로 넘겨준다.
     class MyViewHolder(private val binding: RecipesRowLayoutBinding)
@@ -42,6 +44,7 @@ class RecipesAdapter : RecyclerView.Adapter<RecipesAdapter.MyViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+        Log.d("dasfs",position.toString())
         val currentRecipe = recipe[position]
         //화면 요소 구성
         holder.bind(currentRecipe)
@@ -60,6 +63,7 @@ class RecipesAdapter : RecyclerView.Adapter<RecipesAdapter.MyViewHolder>() {
 
         //두 레시피의 다른점 찾기
         val recipesDifful = RecipesDiffUtil(recipe,newData.results)
+        Log.d("dfadf",recipe.toString())
         val diffUtilResult = DiffUtil.calculateDiff(recipesDifful)
         recipe = newData.results
         //지금까지의 변경사항 전달

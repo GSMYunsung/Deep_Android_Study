@@ -15,6 +15,12 @@ import com.example.udemy.databinding.FragmentRecipesBinding
 import com.example.udemy.mvvm.MainViewModel
 import com.example.udemy.mvvm.adapter.RecipesAdapter
 import com.example.udemy.mvvm.util.Constants.Companion.API_KEY
+import com.example.udemy.mvvm.util.Constants.Companion.QUERY_ADD_RECIPE_INFORMATION
+import com.example.udemy.mvvm.util.Constants.Companion.QUERY_API_KEY
+import com.example.udemy.mvvm.util.Constants.Companion.QUERY_DIET
+import com.example.udemy.mvvm.util.Constants.Companion.QUERY_FULL_INGREDIENTS
+import com.example.udemy.mvvm.util.Constants.Companion.QUERY_NUMBER
+import com.example.udemy.mvvm.util.Constants.Companion.QUERY_TYPE
 import com.example.udemy.mvvm.util.NetWorkResult
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -64,12 +70,12 @@ class RecipesFragment : Fragment() {
         val queries : HashMap<String,String> = HashMap()
 
         //우리가 얻고자하는 레시피의 양
-        queries["number"] = "50"
-        queries["apiKey"] = API_KEY
-        queries["type"] = "snack"
-        queries["diet"] = "vegan"
-        queries["addRecipeInformation"] = "true"
-        queries["fillIngredients"] = "true"
+        queries[QUERY_NUMBER] = "50"
+        queries[QUERY_API_KEY] = API_KEY
+        queries[QUERY_TYPE] = "snack"
+        queries[QUERY_DIET] = "vegan"
+        queries[QUERY_ADD_RECIPE_INFORMATION] = "true"
+        queries[QUERY_FULL_INGREDIENTS] = "true"
 
         return queries
     }

@@ -6,5 +6,5 @@ import com.google.gson.annotations.SerializedName
 //음식의 종합적 레시피
 data class FoodRecipe(
     @SerializedName("results")
-    val results: List<Result>,
+    val results: Array<Result>,
 )

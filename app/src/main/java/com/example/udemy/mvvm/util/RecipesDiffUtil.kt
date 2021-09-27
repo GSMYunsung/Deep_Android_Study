@@ -4,8 +4,8 @@ import androidx.recyclerview.widget.DiffUtil
 import com.example.udemy.mvvm.models.Result
 
 class RecipesDiffUtil(
-    private val oldList : List<Result>,
-    private val newList : List<Result>
+    private val oldList : Array<Result>,
+    private val newList : Array<Result>
 ) : DiffUtil.Callback() {
 
     //이전의 목록을 가져오고 기본적으로 주문 목록의 크기를 반환한다. 또한 크기를 반환한다.

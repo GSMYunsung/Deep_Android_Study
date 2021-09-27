@@ -5,6 +5,7 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.net.NetworkRequest
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -36,6 +37,7 @@ class MainViewModel @Inject constructor(
     private suspend fun getRecipesSafeCall(queries: Map<String, String>) {
         //처음에는 로딩 값으로 시작
         recipesResponse.value = NetWorkResult.Loading()
+        Log.d("asdfadsfdsfd",hasInternetConnection().toString())
         if (hasInternetConnection()){
             try {
                 //의존성 주입으로 Remote class에서 가져온 함수를 쓴다.
