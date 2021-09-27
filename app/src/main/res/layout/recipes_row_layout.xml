@@ -137,7 +137,7 @@
                     app:srcCompat="@drawable/ic_leaf" />
 
                 <TextView
-                    applyVe ganColor="@{result.vegan}"
+                    applyVeganColor="@{result.vegan}"
                     android:textAlignment="center"
                     android:id="@+id/leaf_textView"
                     android:layout_width="wrap_content"
