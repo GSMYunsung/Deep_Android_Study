@@ -1,4 +1,4 @@
-package com.example.udemy.mvvm
+package com.example.udemy.mvvm.data.database
 
 import androidx.room.Dao
 import androidx.room.Insert
@@ -10,6 +10,7 @@ import kotlinx.coroutines.flow.Flow
 interface RecipesDao {
 
     // API에서 새로운 레시피를 가져올시에 이전데이터 교체
+    // 비동기로 값을 가져옴
     // 결론적으로 FoodRecipe Class 에서 값을 가져온다음 RoomDB에 Insert 한다.
    @Insert(onConflict = OnConflictStrategy.REPLACE)
    suspend fun insertRecipes(recipesEntity: RecipesEntity)
