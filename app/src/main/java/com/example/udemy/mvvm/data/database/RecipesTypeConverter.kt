@@ -1,4 +1,4 @@
-package com.example.udemy.mvvm
+package com.example.udemy.mvvm.data.database
 
 import androidx.room.TypeConverter
 import com.example.udemy.mvvm.models.FoodRecipe
