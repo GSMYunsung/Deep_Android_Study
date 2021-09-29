@@ -6,13 +6,14 @@ import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.net.NetworkRequest
 import android.util.Log
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.example.udemy.mvvm.data.RemoteDataSource
+import com.example.udemy.mvvm.data.database.RecipesEntity
 import com.example.udemy.mvvm.models.FoodRecipe
 import com.example.udemy.mvvm.util.NetWorkResult
+import com.example.udemy.viewModel.viewModelSample.viewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.handleCoroutineException
 import kotlinx.coroutines.launch
 import retrofit2.Response
@@ -26,6 +27,17 @@ class MainViewModel @Inject constructor(
     private val repository: Repository,
     application: Application
     ) : AndroidViewModel(application) {
+
+    /**Room 부분*/
+
+    val readRecipes : LiveData<List<RecipesEntity>> = repository.local.readDatabase().asLiveData()
+
+    private fun insertRecipes(recipesEntity: RecipesEntity) =
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.local.insertRecipes(recipesEntity)
+        }
+
+    /**레트로핏 부분*/
 
     //네트워크값이 항상 변할 수 있음
     var recipesResponse : MutableLiveData<NetWorkResult<FoodRecipe>> = MutableLiveData()
@@ -43,6 +55,13 @@ class MainViewModel @Inject constructor(
                 //의존성 주입으로 Remote class에서 가져온 함수를 쓴다.
                 val response = repository.remote.getRecipes(queries)
                 recipesResponse.value = handleFoodRecipesResponse(response)
+
+                val foodRecipe = recipesResponse.value!!.data
+
+                if(foodRecipe != null){
+                    offlineCacheRecipes(foodRecipe)
+                }
+
             }catch (e:Exception){
                 recipesResponse.value = NetWorkResult.Error("Recipes not found.")
             }
@@ -52,6 +71,12 @@ class MainViewModel @Inject constructor(
             recipesResponse.value = NetWorkResult.Error("No Internet Connection 연결오류")
         }
    }
+
+    private fun offlineCacheRecipes(foodRecipe: FoodRecipe) {
+        val recipesEntity = RecipesEntity(foodRecipe)
+        insertRecipes(recipesEntity)
+
+    }
 
     //api로 부터 응답을 받음
     private fun handleFoodRecipesResponse(response: Response<FoodRecipe>): NetWorkResult<FoodRecipe>? {
