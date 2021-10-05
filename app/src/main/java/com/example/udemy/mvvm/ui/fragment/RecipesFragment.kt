@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.udemy.R
 import com.example.udemy.databinding.FragmentRecipesBinding
@@ -22,7 +23,9 @@ import com.example.udemy.mvvm.util.Constants.Companion.QUERY_FULL_INGREDIENTS
 import com.example.udemy.mvvm.util.Constants.Companion.QUERY_NUMBER
 import com.example.udemy.mvvm.util.Constants.Companion.QUERY_TYPE
 import com.example.udemy.mvvm.util.NetWorkResult
+import com.example.udemy.mvvm.util.observeOnce
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 // 이곳의 Fragment 의 mainViewModel 객체 가 ViewModel 종속성을 주입 받았기 때문에 다음 주석을 달아야한다.
 @AndroidEntryPoint
@@ -42,12 +45,36 @@ class RecipesFragment : Fragment() {
         mainViewModel = ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
 
         setupRecyclerView()
-        requestApiData()
+        readDatabase()
 
         return binding.root
     }
 
+    private fun setupRecyclerView(){
+        binding.recyclerview.adapter = mAdapter
+        binding.recyclerview.layoutManager = LinearLayoutManager(requireContext())
+        showShimmerEffect()
+    }
+
+    private fun readDatabase() {
+        // 값을 불러오게 될경우에 데이터베이스를 업데이트!
+
+        lifecycleScope.launch {
+
+            mainViewModel.readRecipes.observeOnce(viewLifecycleOwner, { database ->
+                if (database.isNotEmpty()) {
+                    Log.d("RecipesFragment", "dataBase called")
+                    mAdapter.setData(database[0].foodRecipe)
+                    hideShimmerEffect()
+                } else {
+                    requestApiData()
+                }
+            })
+        }
+    }
+
     private fun requestApiData(){
+        Log.d("RecipesFragment" , "requestApiData called")
         mainViewModel.getRecipes(applyQueries())
         mainViewModel.recipesResponse.observe(viewLifecycleOwner, {response ->
             when(response){
@@ -80,10 +107,17 @@ class RecipesFragment : Fragment() {
         return queries
     }
 
-    private fun setupRecyclerView(){
-        binding.recyclerview.adapter = mAdapter
-        binding.recyclerview.layoutManager = LinearLayoutManager(requireContext())
-        showShimmerEffect()
+    private fun loadDataFromCache(){
+
+        lifecycleScope.launch {
+
+            mainViewModel.readRecipes.observe(viewLifecycleOwner,{ database ->
+                if(database.isNotEmpty()){
+                    mAdapter.setData(database[0].foodRecipe)
+                }
+            })
+
+        }
     }
 
     private fun showShimmerEffect(){
